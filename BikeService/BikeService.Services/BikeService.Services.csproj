@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+	<!--netstandard2.0-->
+  <ItemGroup>
+    <ProjectReference Include="..\BikeService.Repositories\BikeService.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>
