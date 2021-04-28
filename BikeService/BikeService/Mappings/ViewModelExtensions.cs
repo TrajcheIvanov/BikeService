@@ -13,6 +13,7 @@ namespace BikeService.Mappings
         {
             return new ServiceType
             {
+                Id = viewModel.Id,
                 Name = viewModel.Name,
                 Price = viewModel.Price,
             };

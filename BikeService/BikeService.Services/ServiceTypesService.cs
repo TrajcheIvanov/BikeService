@@ -24,5 +24,26 @@ namespace BikeService.Services
         {
             return _serviceTypesRepository.GetAll();
         }
+
+        public ServiceType GetById(int id)
+        {
+            return _serviceTypesRepository.GetById(id);
+        }
+
+        public void Update(ServiceType serviceType)
+        {
+            var modelForUpdate = _serviceTypesRepository.GetById(serviceType.Id);
+
+            if (modelForUpdate == null)
+            {
+                return;
+            }
+            else
+            {
+                modelForUpdate.Name = serviceType.Name;
+                modelForUpdate.Price = serviceType.Price;
+                _serviceTypesRepository.Update(modelForUpdate);
+            }
+        }
     }
 }

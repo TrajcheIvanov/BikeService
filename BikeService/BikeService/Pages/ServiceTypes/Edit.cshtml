@@ -1,13 +1,14 @@
 ﻿@page
-@model BikeService.Pages.ServiceTypes.CreateModel
-@{ ViewData["Title"] = "Create";
+@model BikeService.Pages.ServiceTypes.EditModel
+@{ ViewData["Title"] = "Edit";
     Layout = "~/Pages/Shared/_Layout.cshtml"; }
 
 <br />
-<h2 class="text-success">Create Service Type</h2>
+<h2 class="text-success">Edit Service Type</h2>
 <br />
 <form method="post">
     <div class="border backgroundwhite">
+        <input type="hidden" asp-for="ServiceType.Id"/>
         <div class="form-group row">
             <div class="col-2">
                 <label asp-for="ServiceType.Name"></label>
@@ -28,7 +29,7 @@
         </div>
         <div class="form-group row">
             <div class="col-5 offset-2">
-                <partial name="_CreateAndBackToListPartial"/>
+                <partial name="_EditAndBackToListPartial" />
             </div>
         </div>
     </div>

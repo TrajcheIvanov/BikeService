@@ -9,5 +9,8 @@ namespace BikeService.Services.interfaces
     {
         List<ServiceType> GetAll();
         void Create(ServiceType serviceType);
+        ServiceType GetById(int id);
+
+        void Update(ServiceType serviceType);
     }
 }
