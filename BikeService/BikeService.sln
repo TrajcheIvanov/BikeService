@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeService", "BikeService\BikeService.csproj", "{4EEEF30D-A83C-47C2-99AA-A992EBE05A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeService", "BikeService\BikeService.csproj", "{4EEEF30D-A83C-47C2-99AA-A992EBE05A43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeService.Models", "BikeService.Models\BikeService.Models.csproj", "{FBD102C4-2675-4D40-B04E-16A13F5DBC7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeService.Models", "BikeService.Models\BikeService.Models.csproj", "{FBD102C4-2675-4D40-B04E-16A13F5DBC7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeService.Repositories", "BikeService.Repositories\BikeService.Repositories.csproj", "{629D3C25-98D7-4543-B94A-558E96F44885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeService.Repositories", "BikeService.Repositories\BikeService.Repositories.csproj", "{629D3C25-98D7-4543-B94A-558E96F44885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeService.Services", "BikeService.Services\BikeService.Services.csproj", "{47461328-F62A-4337-B7E0-1D01C2A76A57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeService.Services", "BikeService.Services\BikeService.Services.csproj", "{47461328-F62A-4337-B7E0-1D01C2A76A57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
