@@ -5,6 +5,14 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+@if (@Model.SuccessMessage != null)
+ {
+    <div class="alert alert-success" role="alert">
+     @Model.SuccessMessage
+    </div>
+ }
+
+
 <form asp-page="Index" method="get">
     <br /><br />
     <div class="row">
@@ -17,7 +25,37 @@
             </a>
         </div>
     </div>
-     <div>
+
+    <div class="border backgroundwhite">
+
+        <div style="height:60px;" class="container border border-secondary">
+            <div class="row">
+                <div class="col-11">
+                    <div class="row p-2" >
+                        <div class="col-4">
+                            <input type="text" name="searchEmail" placeholder="Email..." class="form-control" />
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="searchName" placeholder="Name..." class="form-control" />
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="searchPhone" placeholder="Phone..." class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="row p-2" >
+                        <button type="submit" name="submit" value="Search" class="btn btn-warning form-control">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div>
             <table class="table table-striped border">
                 <tr class="table-secondary">
                     <th>
@@ -32,28 +70,33 @@
                     <th></th>
                     <th></th>
                 </tr>
-                @foreach(var item in Model.UsersListVM.ApplicationUserList)
+                @foreach (var item in Model.UsersListVM.ApplicationUserList)
                 {
-                <tr>
-                    <td>
-                        @item.Name
-                    </td>
-                    <td>
-                        @item.PhoneNumber
-                    </td>
-                    <td>
-                        @item.Email
-                    </td>
-                    <td>
-                        <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
-                            <i class="far fa-edit"></i>
-                        </a>
-                        <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
-                            <i class="far fa-trash-alt"></i>
-                        </a>
-                    </td>
-                </tr>
-                }
+                    <tr>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.PhoneNumber
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    }
                 <tr>
                     <td colspan="5" class="text-right">
                         <div page-model="@Model.UsersListVM.PagingInfo" asp-action="Index" page-class="btn border"
@@ -64,5 +107,5 @@
                 </tr>
             </table>
         </div>
-
+    </div>
 </form>

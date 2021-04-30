@@ -26,7 +26,11 @@ namespace BikeService.Mappings
                 Id = entity.Id,
                 Name = entity.Name,
                 Email = entity.Email,
-                PhoneNumber = entity.PhoneNumber
+                PhoneNumber = entity.PhoneNumber,
+                Address = entity.Address,
+                City = entity.City,
+                PostalCode = entity.PostalCode,
+                
             };
         }
     }

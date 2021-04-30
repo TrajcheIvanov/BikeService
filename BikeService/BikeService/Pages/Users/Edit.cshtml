@@ -1,0 +1,87 @@
+﻿@page
+@model BikeService.Pages.Users.EditModel
+<br />
+<h2 class="text-primary">Edit Customer</h2>
+<br />
+<form method="post">
+    <div class=" border  backgroundwhite">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="AplicationViewModel.Id" hidden />
+        <input asp-for="AplicationViewModel.Email" hidden />
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="AplicationViewModel.Name" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="AplicationViewModel.Name" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="AplicationViewModel.Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="AplicationViewModel.Email" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="AplicationViewModel.Email" disabled class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="AplicationViewModel.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="AplicationViewModel.PhoneNumber" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="AplicationViewModel.PhoneNumber" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="AplicationViewModel.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="AplicationViewModel.Address" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="AplicationViewModel.Address" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="AplicationViewModel.Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="AplicationViewModel.City" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="AplicationViewModel.City" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="AplicationViewModel.City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="AplicationViewModel.PostalCode" class="text-info"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input asp-for="AplicationViewModel.PostalCode" class="form-control" />
+                </div>
+            </div>
+            <span asp-validation-for="AplicationViewModel.PostalCode" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_EditAndBackToListPartial" />
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
