@@ -1,0 +1,68 @@
+﻿@page
+@model BikeService.Pages.Users.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<form asp-page="Index" method="get">
+    <br /><br />
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-dark">Customers List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-page="/Account/Register" asp-area="Identity" class="btn btn-warning">
+                <i class="fas fa-plus"></i>&nbsp; Create New Customer
+            </a>
+        </div>
+    </div>
+     <div>
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Phone Number
+                    </th>
+                    <th>
+                        E-Mail
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach(var item in Model.UsersListVM.ApplicationUserList)
+                {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.PhoneNumber
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+                <tr>
+                    <td colspan="5" class="text-right">
+                        <div page-model="@Model.UsersListVM.PagingInfo" asp-action="Index" page-class="btn border"
+                             page-class-normal="btn btn-light" page-class-selected="btn btn-warning active" class="btn-group">
+                        </div>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+</form>

@@ -19,5 +19,15 @@ namespace BikeService.Mappings
             };
         }
 
+        public static ApplicationUserViewModel ToViewModel(this ApplicationUser entity)
+        {
+            return new ApplicationUserViewModel()
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Email = entity.Email,
+                PhoneNumber = entity.PhoneNumber
+            };
+        }
     }
 }
