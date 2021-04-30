@@ -1,4 +1,5 @@
 ﻿using System;
+using BikeService.Models;
 using BikeService.Repositories;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BikeService.Repositories
 {
-    public class BikeServiceDbContext : IdentityDbContext
+    public class BikeServiceDbContext : IdentityDbContext<ApplicationUser>
     {
         public BikeServiceDbContext(DbContextOptions<BikeServiceDbContext> options) : base(options)
         {

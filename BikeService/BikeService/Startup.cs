@@ -1,3 +1,4 @@
+using BikeService.Models;
 using BikeService.Repositories;
 using BikeService.Repositories.Interfaces;
 using BikeService.Services;
@@ -33,7 +34,8 @@ namespace BikeService
                 x=> x.UseSqlServer(Configuration.GetConnectionString("BikeService"))
                 );
             
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ApplicationUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<BikeServiceDbContext>()
                     .AddDefaultTokenProviders();
 
