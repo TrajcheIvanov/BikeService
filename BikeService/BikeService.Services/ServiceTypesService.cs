@@ -30,6 +30,11 @@ namespace BikeService.Services
             return _serviceTypesRepository.GetById(id);
         }
 
+        public void Remove(ServiceType serviceForDelete)
+        {
+            _serviceTypesRepository.Delete(serviceForDelete);
+        }
+
         public void Update(ServiceType serviceType)
         {
             var modelForUpdate = _serviceTypesRepository.GetById(serviceType.Id);

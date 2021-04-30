@@ -10,17 +10,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BikeService.Pages.ServiceTypes
 {
-    public class EditModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly IServiceTypesService _serviceTypeService;
-        public EditModel(IServiceTypesService serviceTypeService)
+        public DeleteModel(IServiceTypesService serviceTypeService)
         {
             _serviceTypeService = serviceTypeService;
         }
 
         [BindProperty]
         public ServiceTypeViewModel ServiceType { get; set; }
-
         public IActionResult OnGet(int id)
         {
             var modelForEdit = _serviceTypeService.GetById(id);
@@ -37,16 +36,9 @@ namespace BikeService.Pages.ServiceTypes
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-            else
-            {
-                var modelForUpdate = ServiceType.ToDomainModel();
-                _serviceTypeService.Update(modelForUpdate);
-                return RedirectToPage("Index", new { successMessage = $"Successfully Edited service type with name: {ServiceType.Name}" });
-            }
+            var serviceForDelete = ServiceType.ToDomainModel();
+            _serviceTypeService.Remove(serviceForDelete);
+            return RedirectToPage("./Index" , new { successMessage = $"Successfully deleted service type with name: {serviceForDelete.Name}" });
         }
     }
 }

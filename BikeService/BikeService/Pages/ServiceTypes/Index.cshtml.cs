@@ -20,8 +20,11 @@ namespace BikeService.Pages.ServiceTypes
 
         public List<ServiceTypeViewModel> ServiceTypes { get; set; }
 
-        public void OnGet()
+        public string SuccessMessage { get; set; }
+
+        public void OnGet(string successMessage)
         {
+            SuccessMessage = successMessage;
             var serviceTypes = _serviceTypeService.GetAll();
             ServiceTypes = serviceTypes.Select(x => x.ToViewModel()).ToList();
         }

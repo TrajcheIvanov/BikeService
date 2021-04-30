@@ -10,17 +10,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BikeService.Pages.ServiceTypes
 {
-    public class EditModel : PageModel
+    public class DetailsModel : PageModel
     {
         private readonly IServiceTypesService _serviceTypeService;
-        public EditModel(IServiceTypesService serviceTypeService)
+        public DetailsModel(IServiceTypesService serviceTypeService)
         {
             _serviceTypeService = serviceTypeService;
         }
 
         [BindProperty]
         public ServiceTypeViewModel ServiceType { get; set; }
-
         public IActionResult OnGet(int id)
         {
             var modelForEdit = _serviceTypeService.GetById(id);
@@ -32,20 +31,6 @@ namespace BikeService.Pages.ServiceTypes
             {
                 ServiceType = modelForEdit.ToViewModel();
                 return Page();
-            }
-        }
-
-        public IActionResult OnPost()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-            else
-            {
-                var modelForUpdate = ServiceType.ToDomainModel();
-                _serviceTypeService.Update(modelForUpdate);
-                return RedirectToPage("Index", new { successMessage = $"Successfully Edited service type with name: {ServiceType.Name}" });
             }
         }
     }

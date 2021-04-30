@@ -12,5 +12,6 @@ namespace BikeService.Services.interfaces
         ServiceType GetById(int id);
 
         void Update(ServiceType serviceType);
+        void Remove(ServiceType serviceForDelete);
     }
 }

@@ -32,7 +32,7 @@ namespace BikeService.Pages.ServiceTypes
             if (ModelState.IsValid)
             {
                 _serviceTypeService.Create(ServiceType.ToDomainModel());
-                return RedirectToPage("Index");
+                return RedirectToPage("./Index", new { successMessage = $"Successfully Created service type with name: {ServiceType.Name}" });
             }
 
             return Page();
