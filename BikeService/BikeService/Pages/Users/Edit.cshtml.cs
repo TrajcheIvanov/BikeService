@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using BikeService.Mappings;
 using BikeService.Repositories;
+using BikeService.Utility;
 using BikeService.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BikeService.Pages.Users
 {
+    [Authorize(Roles = SD.AdminEndUser)]
     public class EditModel : PageModel
     {
         private readonly BikeServiceDbContext _db;

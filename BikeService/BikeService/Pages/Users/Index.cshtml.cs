@@ -8,6 +8,7 @@ using BikeService.Models;
 using BikeService.Repositories;
 using BikeService.Utility;
 using BikeService.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BikeService.Pages.Users
 {
+    [Authorize(Roles = SD.AdminEndUser)]
     public class IndexModel : PageModel
     {
         

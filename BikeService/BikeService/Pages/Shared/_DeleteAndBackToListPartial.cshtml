@@ -1,7 +1,7 @@
 ﻿
 <div class="row">
     <div class="col-6">
-        <button type="submit" class="btn btn-danger form-control">Delete</button>
+        <button type="submit" class="btn btn-danger form-control" onclick="return confirm('Are you sure?')">Delete</button>
     </div>
     <div class="col-6">
         <a asp-page="Index" class="btn btn-success form-control">Back to List</a>
