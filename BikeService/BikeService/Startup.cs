@@ -57,9 +57,11 @@ namespace BikeService
 
             //register repositories
             services.AddTransient<IServiceTypesRepository, ServiceTypesRepository>();
+            services.AddTransient<IBikesRepository, BikesRepository>();
 
             //register services
             services.AddTransient<IServiceTypesService, ServiceTypesService>();
+            services.AddTransient<IBikesService, BikesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

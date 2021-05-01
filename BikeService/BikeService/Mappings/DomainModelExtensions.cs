@@ -33,5 +33,23 @@ namespace BikeService.Mappings
                 
             };
         }
+
+        public static BikeViewModel ToViewModel(this Bike entity)
+        {
+
+            return new BikeViewModel()
+            {
+
+                Id = entity.Id,
+                VIN = entity.VIN,
+                Make = entity.Make,
+                Model = entity.Model,
+                Style = entity.Style,
+                Year = entity.Year,
+                Kilometers = entity.Kilometers,
+                Color = entity.Color,
+                UserId = entity.UserId
+            };
+        }
     }
 }

@@ -1,0 +1,85 @@
+﻿@page
+@model BikeService.Pages.Bikes.DeleteModel
+@{
+}
+
+
+<br />
+<h2 class="text-dark">Delete Bike</h2>
+<br />
+<form method="post">
+    <div class=" border  backgroundwhite">
+        <input type="hidden" asp-for="Bike.Id" />
+        <input type="hidden" asp-for="Bike.UserId" />
+        <div class="form-group row ">
+            <div class="col-2">
+                <label asp-for="Bike.VIN" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Bike.VIN" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row ">
+            <div class="col-2">
+                <label asp-for="Bike.Make" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Bike.Make" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row ">
+            <div class="col-2">
+                <label asp-for="Bike.Model" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Bike.Model" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row ">
+            <div class="col-2">
+                <label asp-for="Bike.Style" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Bike.Style" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row ">
+            <div class="col-2">
+                <label asp-for="Bike.Year" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Bike.Year" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row ">
+            <div class="col-2">
+                <label asp-for="Bike.Kilometers" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Bike.Kilometers" disabled class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row ">
+            <div class="col-2">
+                <label asp-for="Bike.Color" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Bike.Color" disabled class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="submit" class="btn btn-danger form-control" value="Delete" />
+                    </div>
+                    <div class="col-6">
+                        <a asp-page="Index" asp-route-userId="@Model.Bike.UserId" class="btn btn-success form-control">Back to List</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

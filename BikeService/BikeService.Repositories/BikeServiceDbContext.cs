@@ -13,7 +13,9 @@ namespace BikeService.Repositories
         {
         }
 
-        DbSet<ServiceType> ServiceTypes { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
+
+        public DbSet<Bike> Bikes { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder builder)
         //{

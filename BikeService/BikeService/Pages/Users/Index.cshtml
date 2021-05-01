@@ -83,6 +83,11 @@
                             @item.Email
                         </td>
                         <td>
+                            <a asp-page="../Bikes/Index" asp-route-userId="@item.Id" style="text-decoration:none">
+                                <img src="~/images/bike2.png"  style="width:45px"/> &nbsp; View Bikes
+                            </a>
+                        </td>
+                        <td>
                             <div class="btn-group" role="group">
                                 <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Edit">
                                     <i class="far fa-edit"></i>
@@ -91,9 +96,6 @@
                                     <i class="far fa-trash-alt"></i>
                                 </a>
                             </div>
-                        </td>
-                        <td>
-
                         </td>
                     </tr>
                     }
