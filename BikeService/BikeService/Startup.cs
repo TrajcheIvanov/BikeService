@@ -44,6 +44,15 @@ namespace BikeService
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<EmailOptions>(Configuration);
 
+            services.AddAuthentication().AddFacebook(fb =>
+            {
+
+                fb.AppId = "165031325536870";
+                fb.AppSecret = "66f34978e52d3b62a65c21f4eba4f108";
+
+            });
+
+
             services.AddRazorPages();
 
             //register repositories
