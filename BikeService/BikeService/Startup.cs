@@ -1,3 +1,4 @@
+using BikeService.Email;
 using BikeService.Models;
 using BikeService.Repositories;
 using BikeService.Repositories.Interfaces;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +40,9 @@ namespace BikeService
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<BikeServiceDbContext>()
                     .AddDefaultTokenProviders();
+
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<EmailOptions>(Configuration);
 
             services.AddRazorPages();
 

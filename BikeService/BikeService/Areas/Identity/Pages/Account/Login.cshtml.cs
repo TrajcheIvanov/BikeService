@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using BikeService.Repositories;
 
 namespace BikeService.Areas.Identity.Pages.Account
 {
@@ -21,14 +22,18 @@ namespace BikeService.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly BikeServiceDbContext _db;
 
         public LoginModel(SignInManager<ApplicationUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            BikeServiceDbContext db
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _db = db;
         }
 
         [BindProperty]
@@ -80,6 +85,14 @@ namespace BikeService.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+
+                var user = _db.Users.FirstOrDefault(x => x.Email == Input.Email);
+
+                if (user != null && !user.EmailConfirmed)
+                {
+                    return RedirectToPage("VerifyEmail", new { id = Input.Email });
+                }
+
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
