@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using BikeService.Mappings;
 using BikeService.Services.interfaces;
 using BikeService.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BikeService.Pages.Bikes
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         

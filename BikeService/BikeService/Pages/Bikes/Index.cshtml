@@ -17,8 +17,9 @@
             </div>
             <div class="col-6 text-right">
                 @if (User.IsInRole(SD.AdminEndUser))
-                {
-                    <a asp-page="/Users/Index" class="btn btn-primary btn-sm">Back to Users</a>}
+                 {
+                    <a asp-page="/Users/Index" class="btn btn-primary btn-sm">Back to Users</a>
+                 }
             </div>
         </div>
         <div class="card-body">
@@ -59,7 +60,7 @@
             </div>
             @if (Model.BikeAndCustomVM.Bikes.Count() == 0)
             {
-                <p>
+                <p class="font-weight-bold text-danger">
                     No Bike Found! Please add a Bike...
                 </p> }
             else

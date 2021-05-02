@@ -13,25 +13,32 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-warning border-bottom box-shadow mb-3" style="background-color:#ffc107">
             <div class="container">
-                <a class="navbar-brand text-dark font-weight-bold" asp-area="" asp-page="/Index">BikeService</a>
+                <a class="navbar-brand text-dark font-weight-bold" asp-area="" asp-page="/Index">
+                    <img src="~/images/chain2.png" style="height:50px" alt="Alternate Text" />
+                    <label class="text-dark" style="cursor:pointer">BikeService</label>
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
+                        
                         @if (User.IsInRole(SD.AdminEndUser))
-                         {
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/ServiceTypes/Index">Service Types</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Users/Index">Users</a>
                             </li>
-                         }
+                        }
+                        @if (User.IsInRole(SD.CustomerEndUser))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Bikes/Index">Bikes</a>
+                            </li>
+                        }
                     </ul>
                     
                       

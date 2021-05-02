@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using BikeService.Models;
 using BikeService.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace BikeService.Pages.Services
 {
+    [Authorize]
     public class DetailsModel : PageModel
     {
         private readonly BikeServiceDbContext _db;
