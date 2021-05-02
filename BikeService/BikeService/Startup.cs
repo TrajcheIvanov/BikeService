@@ -53,6 +53,13 @@ namespace BikeService
             });
 
 
+            services.AddAuthentication().AddGoogle(g => 
+            {
+                g.ClientId = "872108165650-phmqicd56ujr89igsg610vcfio4lmp1t.apps.googleusercontent.com";
+                g.ClientSecret = "7LWjd8vMhWnEsWD1fSc-aPl9";
+
+            });
+
             services.AddRazorPages();
 
             //register repositories
