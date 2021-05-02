@@ -17,6 +17,12 @@ namespace BikeService.Repositories
 
         public DbSet<Bike> Bikes { get; set; }
 
+        public DbSet<ServiceShoppingCart> ServiceShoppingCarts { get; set; }
+
+        public DbSet<ServiceHeader> ServiceHeaders { get; set; }
+
+        public DbSet<ServiceDetails> ServiceDetails { get; set; }
+
         //protected override void OnModelCreating(ModelBuilder builder)
         //{
         //    base.OnModelCreating(builder);

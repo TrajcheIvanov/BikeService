@@ -4,14 +4,16 @@ using BikeService.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BikeService.Repositories.Migrations
 {
     [DbContext(typeof(BikeServiceDbContext))]
-    partial class BikeServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210502075423_AddedServiceShoppingCartsTable")]
+    partial class AddedServiceShoppingCartsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,63 +137,6 @@ namespace BikeService.Repositories.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Bikes");
-                });
-
-            modelBuilder.Entity("BikeService.Models.ServiceDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ServiceHeaderId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ServiceName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("ServicePrice")
-                        .HasColumnType("float");
-
-                    b.Property<int>("ServiceTypeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ServiceHeaderId");
-
-                    b.HasIndex("ServiceTypeId");
-
-                    b.ToTable("ServiceDetails");
-                });
-
-            modelBuilder.Entity("BikeService.Models.ServiceHeader", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BikeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Details")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Kilometers")
-                        .HasColumnType("float");
-
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BikeId");
-
-                    b.ToTable("ServiceHeaders");
                 });
 
             modelBuilder.Entity("BikeService.Models.ServiceShoppingCart", b =>
@@ -375,30 +320,6 @@ namespace BikeService.Repositories.Migrations
                     b.HasOne("BikeService.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("BikeService.Models.ServiceDetails", b =>
-                {
-                    b.HasOne("BikeService.Models.ServiceHeader", "ServiceHeader")
-                        .WithMany()
-                        .HasForeignKey("ServiceHeaderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BikeService.Models.ServiceType", "ServiceType")
-                        .WithMany()
-                        .HasForeignKey("ServiceTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BikeService.Models.ServiceHeader", b =>
-                {
-                    b.HasOne("BikeService.Models.Bike", "Bike")
-                        .WithMany()
-                        .HasForeignKey("BikeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("BikeService.Models.ServiceShoppingCart", b =>

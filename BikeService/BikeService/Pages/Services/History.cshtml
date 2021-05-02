@@ -1,0 +1,90 @@
+﻿@page
+@model BikeService.Pages.Services.HistoryModel
+@{
+}
+
+<div class="container pt-4 pb-2 row">
+    <div class="col-6">
+        <h2 class="text-dark py-2">Service History</h2>
+    </div>
+    <div class="col-3 offset-3 text-right py-2">
+        <a asp-page="../Bikes/Index" asp-route-userId="@Model.UserId" class="btn btn-primary form-control"> Back to List</a>
+    </div>
+</div>
+
+
+@if (Model.ServiceHeader.Count == 0)
+{
+    <div class="backgroundwhite">
+        <p> No Service record found ...</p>
+    </div>
+}
+else
+{
+    <div class="container backgroundwhite">
+        <div class="card">
+            <div class="card-header bg-warning  ml-0 row container">
+                <div class="col-1 text-center pt-3 text-white-50 ">
+                    <i class="far fa-user fa-2x text-primary"></i>
+                </div>
+                <div class="col-5">
+                    <label class="text-primary font-weight-bold">@Model.ServiceHeader[0].Bike.ApplicationUser.Name</label><br />
+                    <label class="text-primary font-weight-bold">@Model.ServiceHeader[0].Bike.ApplicationUser.Email / @Model.ServiceHeader[0].Bike.ApplicationUser.PhoneNumber</label><br />
+
+                </div>
+
+                <div class="col-5 text-right">
+                    <label class="text-primary font-weight-bold">@Model.ServiceHeader[0].Bike.Make @Model.ServiceHeader[0].Bike.Model @Model.ServiceHeader[0].Bike.Style</label><br />
+                    <label class="text-primary font-weight-bold">@Model.ServiceHeader[0].Bike.Year </label>
+                </div>
+                <div class="col-1 text-center pt-3 text-white-50 ">
+                    <i class="fas fa-bicycle fa-2x text-primary"></i>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            Kilometers
+                        </th>
+                        <th>
+                            Total Price
+                        </th>
+                        <th>
+                            Details
+                        </th>
+                        <th>
+                            Date Created
+                        </th>
+                        <th>
+                            
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.ServiceHeader)
+                     {
+                        <tr>
+                            <td>
+                                @item.Kilometers
+                            </td>
+                            <td>
+                                @item.TotalPrice
+                            </td>
+                            <td>
+                                @item.Details
+                            </td>
+                            <td>
+                                @item.DateAdded
+                            </td>
+                            <td>
+                                <a asp-page="Details" class="btn btn-info form-control" asp-route-serviceId="@item.Id">
+                                    <i class="fas fa-list-alt"></i> Details
+                                </a>
+                            </td>
+                        </tr>
+                     }
+                </table>
+            </div>
+        </div>
+    </div>
+
+}

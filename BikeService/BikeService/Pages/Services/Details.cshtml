@@ -1,0 +1,100 @@
+﻿@page
+@model BikeService.Pages.Services.DetailsModel
+@{
+}
+
+
+<div class="container pt-4 pb-2 row">
+    <div class="col-6">
+        <h2 class="text-dark py-2">Service Details</h2>
+    </div>
+    <div class="col-3 offset-3 text-right py-2">
+        <a asp-page="/Services/History" asp-route-bikeId="@Model.serviceHeader.BikeId" class="btn btn-primary form-control"> Back to List</a>
+    </div>
+</div>
+
+<div class="container backgroundwhite">
+    <div class="card">
+        <div class="card-header bg-warning  ml-0 row container">
+            <div class="col-1 text-center pt-3 text-white-50 ">
+                <i class="far fa-user fa-2x text-primary"></i>
+            </div>
+            <div class="col-5">
+                <label class="text-primary font-weight-bold">@Model.serviceHeader.Bike.ApplicationUser.Name</label><br />
+                <label class="text-primary font-weight-bold">@Model.serviceHeader.Bike.ApplicationUser.Email / @Model.serviceHeader.Bike.ApplicationUser.PhoneNumber</label><br />
+
+            </div>
+
+            <div class="col-5 text-right">
+                <label class="text-primary font-weight-bold">@Model.serviceHeader.Bike.Make @Model.serviceHeader.Bike.Model @Model.serviceHeader.Bike.Style</label><br />
+                <label class="text-primary font-weight-bold">@Model.serviceHeader.Bike.Year </label>
+            </div>
+            <div class="col-1 text-center pt-3 text-white-50 ">
+                <i class="fas fa-bicycle fa-2x text-primary"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            
+                <div class="row pt-3">
+             
+                    <div class="col-7">
+                        <table class="table table-striped border">
+                            <tr class="table-secondary">
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                            </tr>
+                            @foreach (var item in Model.serivceDetails)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.ServiceName
+                                    </td>
+                                    <td>
+                                        @item.ServicePrice
+                                    </td>
+                                   
+                                </tr>
+                            }
+                            <tr style="background-color:#e2fee2">
+                                <td colspan="1">
+                                    <h6 class="text-success">Total Price :</h6>
+                                </td>
+                                <td colspan="2">
+                                    <h6 class="text-success">$@Model.serviceHeader.TotalPrice</h6>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                    <div class="col-5 px-4 pb-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <label asp-for="serviceHeader.Kilometers" class="form-control" style="border:none;"></label>
+                            </div>
+                            <div class="col-9">
+                                <input asp-for="serviceHeader.Kilometers" readonly id="txtKilometers" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-12">
+                                <textarea placeholder="Comments..." asp-for="serviceHeader.Details" class="form-control" readonly style="height:100px">
+
+                                            </textarea>
+                            </div>
+                        </div>
+                        <div class="row p-0">
+                            <div class="col-12">
+                                <button class="btn btn-success form-control" onclick="return validateInput()">Service Completed</button>
+                            </div>
+                        </div>
+
+                    </div>
+        </div>
+    </div>
+ </div>
+</div>

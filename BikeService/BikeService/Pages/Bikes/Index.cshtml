@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-header bg-warning ml-0 row container">
             <div class="col-6">
-                <i class="fas fa-bicycle text-primary"></i>
+                <i class="fas fa-bicycle fa-2x text-primary"></i>
             </div>
             <div class="col-6 text-right">
                 @if (User.IsInRole(SD.AdminEndUser))
@@ -101,14 +101,14 @@
                                 @item.Color
                             </td>
                             <td>
-                                <a class="btn btn-secondary" asp-page="../Services/History" asp-route-carId="@item.Id">
+                                <a class="btn btn-secondary" asp-page="../Services/History" asp-route-bikeId="@item.Id">
                                     <i class="fas fa-wrench"></i> &nbsp; Service History
                                 </a>
                             </td>
                             @if (User.IsInRole(SD.AdminEndUser))
                             {
                                 <td>
-                                    <a class="btn btn-success" asp-page="../Services/Create" asp-route-carId="@item.Id">
+                                    <a class="btn btn-success" asp-page="../Services/Create" asp-route-bikeId="@item.Id">
                                         <i class="fas fa-plus"></i> &nbsp; New Service
                                     </a>
                                 </td>
@@ -117,8 +117,8 @@
                                 <div class="btn-group" role="group">
                                     <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <i class="far fa-edit"></i>
-                                    </a> 
-                                    <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    </a>
+                                    <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Delete" >
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </div>
