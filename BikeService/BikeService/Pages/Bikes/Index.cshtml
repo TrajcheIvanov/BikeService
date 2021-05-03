@@ -58,76 +58,80 @@
                     </div>
                 </div>
             </div>
-            @if (Model.BikeAndCustomVM.Bikes.Count() == 0)
-            {
-                <p class="font-weight-bold text-danger">
-                    No Bike Found! Please add a Bike...
-                </p> }
-            else
-            {
-                <table class="table table-striped border">
-                    <tr class="table-secondary">
-                        <th>
-                            VIN
-                        </th>
-                        <th>
-                            Make
-                        </th>
-                        <th>
-                            Model
-                        </th>
-                        <th>
-                            Color
-                        </th>
-                        <th></th>
-                        @if (User.IsInRole(SD.AdminEndUser))
-                        {
+            <div class="col-md-12">
+                @if (Model.BikeAndCustomVM.Bikes.Count() == 0)
+                {
+                    <p class="font-weight-bold text-danger">
+                        No Bike Found! Please add a Bike...
+                    </p> }
+                else
+                {
+                    <table class="table table-striped border table-responsive-sm">
+                        <tr class="table-secondary">
+                            <th>
+                                VIN
+                            </th>
+                            <th>
+                                Make
+                            </th>
+                            <th>
+                                Model
+                            </th>
+                            <th>
+                                Color
+                            </th>
                             <th></th>
-                        }
-                        <th></th>
-                    </tr>
-                    @foreach (var item in Model.BikeAndCustomVM.Bikes)
-                    {
-                        <tr>
-                            <td>
-                                @item.VIN
-                            </td>
-                            <td>
-                                @item.Make
-                            </td>
-                            <td>
-                                @item.Model
-                            </td>
-                            <td>
-                                @item.Color
-                            </td>
-                            <td>
-                                <a class="btn btn-secondary" asp-page="../Services/History" asp-route-bikeId="@item.Id">
-                                    <i class="fas fa-wrench"></i> &nbsp; Service History
-                                </a>
-                            </td>
                             @if (User.IsInRole(SD.AdminEndUser))
                             {
+                                <th></th>
+                            }
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model.BikeAndCustomVM.Bikes)
+                        {
+                            <tr>
                                 <td>
-                                    <a class="btn btn-success" asp-page="../Services/Create" asp-route-bikeId="@item.Id">
-                                        <i class="fas fa-plus"></i> &nbsp; New Service
+                                    @item.VIN
+                                </td>
+                                <td>
+                                    @item.Make
+                                </td>
+                                <td>
+                                    @item.Model
+                                </td>
+                                <td>
+                                    @item.Color
+                                </td>
+                                <td>
+                                    <a class="btn btn-secondary" asp-page="../Services/History" asp-route-bikeId="@item.Id">
+                                        <i class="fas fa-wrench"></i> &nbsp; Service History
                                     </a>
                                 </td>
-                            }
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Edit">
-                                        <i class="far fa-edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Delete" >
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </div>
+                                @if (User.IsInRole(SD.AdminEndUser))
+                                {
+                                    <td>
+                                        <a class="btn btn-success" asp-page="../Services/Create" asp-route-bikeId="@item.Id">
+                                            <i class="fas fa-plus"></i> &nbsp; New Service
+                                        </a>
+                                    </td>
+                                }
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="far fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger text-white" asp-page="Delete" asp-route-Id="@item.Id" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="far fa-trash-alt"></i>
+                                        </a>
+                                    </div>
 
-                            </td>
-                        </tr>
-                    }
-                </table>}
+                                </td>
+                            </tr>
+                         }
+                    </table>
+                }
+
+            </div>
         </div>
     </div>
 </div>

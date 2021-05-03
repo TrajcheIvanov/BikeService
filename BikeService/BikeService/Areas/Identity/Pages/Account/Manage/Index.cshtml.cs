@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using BikeService.Models;
+using BikeService.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,13 +15,17 @@ namespace BikeService.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly BikeServiceDbContext _db;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            BikeServiceDbContext db
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _db = db;
         }
 
         public string Username { get; set; }
@@ -36,18 +41,34 @@ namespace BikeService.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Required]
+            public string Name { get; set; }
+
+            public string Address { get; set; }
+
+            public string City { get; set; }
+
+            public string PostalCode { get; set; }
+
+            public string Email { get; set; }
+
         }
 
         private async Task LoadAsync(ApplicationUser user)
         {
-            var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var userFromDb = _db.Users.FirstOrDefault(x => x.Email == user.Email);
 
-            Username = userName;
+            Username = userFromDb.UserName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = userFromDb.PhoneNumber,
+                Email = userFromDb.Email,
+                Address = userFromDb.Address,
+                City = userFromDb.City,
+                Name = userFromDb.Name,
+                PostalCode = userFromDb.PostalCode,
             };
         }
 
@@ -77,16 +98,15 @@ namespace BikeService.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            if (Input.PhoneNumber != phoneNumber)
-            {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
-                {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
-                    return RedirectToPage();
-                }
-            }
+            var userFromDB = _db.Users.FirstOrDefault(x => x.Email == user.Email);
+
+            userFromDB.Name = Input.Name;
+            userFromDB.Address = Input.Address;
+            userFromDB.City = Input.City;
+            userFromDB.PostalCode = Input.PostalCode;
+            userFromDB.PhoneNumber = Input.PhoneNumber;
+
+            _db.SaveChanges();
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
