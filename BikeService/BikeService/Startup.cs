@@ -1,3 +1,4 @@
+
 using BikeService.Email;
 using BikeService.Models;
 using BikeService.Repositories;
@@ -32,10 +33,13 @@ namespace BikeService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BikeServiceDbContext>(
-                x=> x.UseSqlServer(Configuration.GetConnectionString("BikeService"))
-                );
             
+
+            services.AddDbContext<BikeServiceDbContext>(
+              x => x.UseSqlServer(Configuration.GetConnectionString("BikeService"))
+              );
+
+
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<BikeServiceDbContext>()
@@ -62,6 +66,8 @@ namespace BikeService
 
             services.AddRazorPages();
 
+            
+
             //register repositories
             services.AddTransient<IServiceTypesRepository, ServiceTypesRepository>();
             services.AddTransient<IBikesRepository, BikesRepository>();
@@ -85,6 +91,7 @@ namespace BikeService
                 app.UseHsts();
             }
 
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -96,6 +103,7 @@ namespace BikeService
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }
